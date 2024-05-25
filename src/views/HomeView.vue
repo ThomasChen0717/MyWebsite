@@ -255,7 +255,7 @@
             </v-col>
             <v-col :cols="isSmallScreen ? 12 : 7">
               <div style="position: relative; margin-bottom: 10vh;" class="mt-16">
-                <v-img src="../assets/hb-count-money.jpg" contain max-height="500px" ></v-img>
+                <v-img src="../assets/hb-count-money.jpg" class="project-image" ></v-img>
               </div>
             </v-col>
           </v-row>
@@ -276,7 +276,7 @@
             </v-col>
             <v-col :cols="isSmallScreen ? 11 : 7">
               <div style="position: relative; margin-bottom: 5vh;" class="mt-16">
-                <v-img src="../assets/hb-web-admin.png" contain max-height="500px"></v-img>
+                <v-img src="../assets/hb-web-admin.png" class="project-image"></v-img>
               </div>
             </v-col>
           </v-row>
@@ -296,7 +296,7 @@
             </v-col>
             <v-col :cols="isSmallScreen ? 12 : 7">
               <div style="position: relative; margin-bottom: 10vh;" class="mt-16">
-                <v-img src="../assets/maze_solver.png" contain max-height="500px" ></v-img>
+                <v-img src="../assets/maze_solver.png" class="project-image" ></v-img>
               </div>
             </v-col>
           </v-row>
@@ -316,7 +316,7 @@
             </v-col>
             <v-col :cols="isSmallScreen ? 12 : 7">
               <div style="position: relative; margin-bottom: 10vh;" class="mt-16">
-                <v-img src="../assets/icon-48.png" contain max-height="500px" ></v-img>
+                <v-img src="../assets/icon-48.png" class="project-image" ></v-img>
               </div>
             </v-col>
           </v-row>
@@ -578,6 +578,12 @@ a {
   .projects ul{
     margin-left:10vw; 
     font-family: 'Victor Mono', monospace;
+  }
+
+  .project-image {
+    width:80%;
+    aspect-ratio:1;
+    object-fit: cover;
   }
 
  
