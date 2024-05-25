@@ -6,12 +6,12 @@
         <v-row>
           <v-col cols="6" sm="0">
           </v-col>
-          <v-col cols="6" sm="6">
-            <div class="intro">
-              <h1 class="text-white">Hello, My name is</h1>
-              <h1 class="text-white" style="font-size:72px;">Thomas Chen</h1>
-              <span class="text-white">Software Engineer</span><br />
-              <v-btn tile dark class="text-white mt-8" variant="outlined" size="x-large" @click = "scroll('contact')">Contact me</v-btn> 
+          <v-col cols="6" sm="6" class="d-flex flex-column justify-center align-end">
+            <div class="intro text-center">
+              <h1 class="text-white small-text">Hello, My name is</h1>
+              <h1 class="text-white small-name">Thomas Chen</h1>
+              <span class="text-white small-text">Software Engineer</span><br/>
+              <v-btn tile dark class="text-white mt-8 small-button" variant="outlined" size="x-large" @click = "scroll('contact')">Contact me</v-btn> 
             </div>
           </v-col>
         </v-row>
@@ -87,7 +87,7 @@
         <v-card elevation="0">
           <div class="d-flex flex-row">
             <v-row>
-              <v-col cols="12" sm="3">
+              <v-col cols="12" md="6" sm="12">
                 <v-tabs v-model="tab" direction="vertical" color = "blue">
                   <v-tab value="exp1" class = "tab">
                     666Life 
@@ -101,9 +101,12 @@
                   <v-tab value="exp4"  class = "tab">
                     UCLA Sepulveda Lab 
                   </v-tab>
+                  <v-tab value="exp5"  class = "tab">
+                    NYU Abu Dhabi
+                  </v-tab>
                 </v-tabs>
               </v-col>
-              <v-col cols="12" sm = "9">
+              <v-col cols="12" md="6" sm = "12">
                 <v-window v-model="tab" >
                   <v-window-item value="exp1">
                     <v-card flat>
@@ -206,6 +209,28 @@
                       </v-card-text> 
                     </v-card>
                   </v-window-item>
+                  <v-window-item value="exp5">
+                    <v-card flat>
+                      <v-card-text>
+                        <p>
+                          Jan 2024 - May 2024 <br>
+                          Undergraduate Researcher <br>
+                          New York University Abu Dhabi. On-Site.<br><br>
+
+                          - Conducted research project on Deadcode Remover web extension under the supervision of Professor Yasir Zaki<br><br>
+                          - Implemented the extension using Javascript, Webpack, and Babel<br><br>
+                          - Facilitated communications with Professor Yasir on specifications and successfully executed suggestions<br><br>
+                          
+                          Skills: 
+                          <ul>
+                            <li>Javascript</li>
+                            <li>Webpack</li>
+                            <li>Babel</li>
+                          </ul>
+                        </p>
+                      </v-card-text> 
+                    </v-card>
+                  </v-window-item>
                   </v-window>
               </v-col>
             </v-row>  
@@ -256,6 +281,46 @@
             </v-col>
           </v-row>
         </div>
+        <div class = "project3">
+          <v-row>
+            <v-col :cols="isSmallScreen ? 12 : 5">
+              <h1 style="font-size:48px; margin-left: 10vw; margin-top: 5vh">Maze Solver</h1>
+              <p style="margin-left: 10vw"> A program utilizing the Laplace Equation to solve mazes.</p> <br>
+              <h3 style="margin-left: 10vw"> Development Tools</h3>
+              <ul>
+                <li>Python</li>
+                <li>Numerical Analysis</li>
+                <li>Laplace Transform</li>
+              </ul>
+              <v-btn tile dark class="mt-8" variant="outlined" size="large" style="margin-left:10vw" @click="openNewTab('https://github.com/ThomasChen0717/MazeSolver')">View Project </v-btn>
+            </v-col>
+            <v-col :cols="isSmallScreen ? 12 : 7">
+              <div style="position: relative; margin-bottom: 10vh;" class="mt-16">
+                <v-img src="../assets/maze_solver.png" contain max-height="500px" ></v-img>
+              </div>
+            </v-col>
+          </v-row>
+        </div>
+        <div class = "project4">
+          <v-row>
+            <v-col :cols="isSmallScreen ? 12 : 5">
+              <h1 style="font-size:48px; margin-left: 10vw; margin-top: 5vh">Dead Code Remover</h1>
+              <p style="margin-left: 10vw"> An extension that detects and cleans unused(dead)javascipt code for more efficient web browsing.</p> <br>
+              <h3 style="margin-left: 10vw"> Development Tools</h3>
+              <ul>
+                <li>Javascript</li>
+                <li>Babel</li>
+                <li>Webpack</li>
+              </ul>
+              <v-btn tile dark class="mt-8" variant="outlined" size="large" style="margin-left:10vw" @click="openNewTab('https://github.com/ThomasChen0717/deadCodeRemover')">View Project </v-btn>
+            </v-col>
+            <v-col :cols="isSmallScreen ? 12 : 7">
+              <div style="position: relative; margin-bottom: 10vh;" class="mt-16">
+                <v-img src="../assets/icon-48.png" contain max-height="500px" ></v-img>
+              </div>
+            </v-col>
+          </v-row>
+        </div>
       </div>
       <div class = "contact" id = "contact">
         <v-row>
@@ -291,10 +356,10 @@
                   </v-col>
                   <v-col cols="12">
                     <v-text-field 
-                      label = "Phone No." 
+                      label = "Email Address" 
                       persistent-hint variant="outlined"
-                      ref="PhoneNumber"
-                      v-model="contactForm.PhoneNumber"
+                      ref="EmailAddress"
+                      v-model="contactForm.EmailAddress"
                     />
                   </v-col>
                 </v-row>
@@ -316,7 +381,6 @@
 
 <script>
 import { defineComponent } from 'vue';
-import axios from 'axios';
 
 // Components
 import NavBar from '@/components/NavBar.vue';
@@ -336,7 +400,7 @@ export default defineComponent({
     isSmallScreenContact:false,
     contactForm:{
       Name: '',
-      PhoneNumber: '',
+      EmailAddress: '',
       Message: ''
     },
     loading: false
@@ -361,30 +425,30 @@ export default defineComponent({
     openNewTab(url) {
       window.open(url, '_blank');
     },
-    submitForm(){
-      axios({
-        method: 'post',
-        url: 'https://formspree.io/f/mleydrvl',
-        data: this.contactForm
-      }).then(() => {
-          console.log('Form submitted successfully');
-          this.$notify({
-            title: 'Form submitted successfully',
-            dangerouslyUseHTMLString: true,
-            type: 'success'
-          })
-        })
-        .catch(error => {
-          console.error('Error submitting form:', error);
-          this.$notify({
-            title: 'Error submitting form:',
-            dangerouslyUseHTMLString: true,
-            type: 'error'
-          })
-        })
+    async submitForm(){
+      this.loading = true;
+      try{
+        const response = await fetch('http://localhost:3000/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.contactForm),
+        });
+        if(response.ok){
+          alert('Message sent successfully!');
+        } else {
+          alert('Failed to send message');
+        }
+      } catch(error) {
+        console.error('Error: ', error);
+        alert('An error occurred while sending the message.');
+      } finally {
+        this.loading = false;
+      }
     }
   }
-});
+})
 </script>
 
 <style scoped>
@@ -406,9 +470,31 @@ export default defineComponent({
   background-position: left;
 
 }
+.text-center {
+  text-align: center;
+}
+
+.text-sm-right {
+  text-align: right;
+}
+
+.align-sm-end {
+  align-items: flex-end;
+}
+
+.small-text {
+  font-size: 2rem;
+}
+.small-name {
+  font-size: 4rem;
+}
+.small-btn {
+  font-size: 1rem;
+}
 
 .intro{
   position: absolute; 
+  text-align: right;
   top:30vh;
   left: 60vw;
 }
@@ -433,13 +519,14 @@ export default defineComponent({
   overflow:auto;
 }
 
-.project1{
+.project1, .project3{
   background-color:azure
 }
 
-.project2{
-  background-color:rgb(233, 127, 5)
+.project2, .project4{
+  background-color:rgb(249, 199, 142)
 }
+
 
 .skills{
   text-align:center;
@@ -507,11 +594,24 @@ a {
       background-size:cover;
       background-position: center;
     }
-  .intro{
+    .intro{
       position: absolute; 
       top:10vh;
       left:5vw;
       right: 10vw;
+      text-align: right !important;
+    }
+    .head .v-col {
+      justify-content: flex-start !important;
+    }
+    .small-text {
+      font-size: 1rem;
+    }
+    .small-name {
+      font-size: 2rem;
+    }
+    .small-btn {
+      font-size: 0.8rem;
     }
   }
 
