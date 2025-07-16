@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../vue-project"
+		}
+	],
+	"settings": {
+		"AutoPreview.serverURL": "localhost:8080",
+		"AutoPreview.center": false,
+		"AutoPreview.background": "transparent",
+		"AutoPreview.locked": false
+	}
+}
