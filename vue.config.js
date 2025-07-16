@@ -8,5 +8,5 @@ module.exports = defineConfig({
 		}
   },
 
-  publicPath: process.env.NODE_ENV === "production" ? "/MyWebsite" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/myWebsite" : "/",
 })
